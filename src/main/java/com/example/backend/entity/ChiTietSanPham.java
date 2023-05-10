@@ -61,9 +61,6 @@ public class ChiTietSanPham {
     @Column(name = "so_luong_ton")
     private Integer soLuongTon;
 
-    @Column(name = "gia_nhap")
-    private BigDecimal giaNhap;
-
     @Column(name = "gia_ban")
     private BigDecimal giaBan;
 

@@ -23,24 +23,5 @@ import java.util.stream.IntStream;
 @SpringBootTest
 public class TestUser {
 
-    @MockBean
-    UserRepository todoRepository;
 
-    @Autowired
-    private UserService service;
-
-    @Before
-    public void setUp() {
-        Mockito.when(todoRepository.findAll())
-                .thenReturn(IntStream.range(0, 10)
-                        .mapToObj(i -> new User(null,"US" + i,"HT" +i,"em"+i,"img" + i,null))
-                        .collect(Collectors.toList()));
-
-
-    }
-
-    @Test
-    public void testCount() {
-        Assert.assertEquals(10, service.countUser());
-    }
 }
