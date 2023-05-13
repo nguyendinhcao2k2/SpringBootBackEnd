@@ -28,8 +28,19 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
                     .path("/images/")
                     .path(chiTietSanPham.getImg())
                     .toUriString();
-            chiTietSanPhamResponses.add(new ChiTietSanPhamResponse(chiTietSanPham.getId(),chiTietSanPham.getTenSP(),img,chiTietSanPham.getCategory().getTen(),chiTietSanPham.getMoTa(),chiTietSanPham.getGiaBan()));
+            chiTietSanPhamResponses.add(new ChiTietSanPhamResponse(chiTietSanPham.getId(),chiTietSanPham.getTenSP(),img,chiTietSanPham.getCategory().getTen(),chiTietSanPham.getMoTa(),chiTietSanPham.getNhaSanXuat().getTen(),chiTietSanPham.getGiaBan()));
         }
+        return chiTietSanPhamResponses;
+    }
+
+    @Override
+    public ChiTietSanPhamResponse getOneById(String id) {
+        ChiTietSanPham chiTietSanPham = chiTietSanPhamRepository.getReferenceById(id);
+        String img = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/images/")
+                .path(chiTietSanPham.getImg())
+                .toUriString();
+        ChiTietSanPhamResponse chiTietSanPhamResponses = new ChiTietSanPhamResponse(chiTietSanPham.getId(),chiTietSanPham.getTenSP(),img,chiTietSanPham.getCategory().getTen(),chiTietSanPham.getMoTa(),chiTietSanPham.getNhaSanXuat().getTen(),chiTietSanPham.getGiaBan());
         return chiTietSanPhamResponses;
     }
 }

@@ -19,8 +19,9 @@ public class ChiTietSanPhamResponse {
     private String id;
     private String tenSanPham;
     private String sanPhamImg;
-    private String brandName;
+    private String cateName;
     private String moTa;
+    private String nsx;
     private BigDecimal price;
 
 }

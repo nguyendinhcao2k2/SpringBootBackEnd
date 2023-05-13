@@ -10,4 +10,6 @@ import java.util.List;
 public interface ChiTietSanPhamService {
 
     List<ChiTietSanPhamResponse> getAll();
+
+    ChiTietSanPhamResponse getOneById(String id);
 }
