@@ -20,7 +20,7 @@ public class CategoryRestController {
 
     @GetMapping
     public ResponseEntity<?> getAll(){
-        System.out.println("Hi");
         return  new ResponseEntity<>(categoryService.findAll(), HttpStatus.OK);
     }
+
 }

@@ -28,4 +28,14 @@ public class ChiTietSanPhamRestController {
     public ResponseEntity<?> getOneProduct(@PathVariable String id){
         return new ResponseEntity<>(chiTietSanPhamService.getOneById(id) ,HttpStatus.OK);
     }
+
+    @GetMapping("/search/{name}")
+    public ResponseEntity<?> searchProduct(@PathVariable String name){
+        return new ResponseEntity<>(chiTietSanPhamService.getAllByName(name) ,HttpStatus.OK);
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<?> getAllProductByCateId(@PathVariable String id){
+        return new ResponseEntity<>(chiTietSanPhamService.findAllByCateID(id) ,HttpStatus.OK);
+    }
 }

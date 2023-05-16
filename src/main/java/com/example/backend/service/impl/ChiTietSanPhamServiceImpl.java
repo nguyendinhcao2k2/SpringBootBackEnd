@@ -22,25 +22,57 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
 
     @Override
     public List<ChiTietSanPhamResponse> getAll() {
-        List<ChiTietSanPhamResponse> chiTietSanPhamResponses = new ArrayList<>();
-        for (ChiTietSanPham chiTietSanPham: chiTietSanPhamRepository.findAll()) {
-            String img = ServletUriComponentsBuilder.fromCurrentContextPath()
-                    .path("/images/")
-                    .path(chiTietSanPham.getImg())
-                    .toUriString();
-            chiTietSanPhamResponses.add(new ChiTietSanPhamResponse(chiTietSanPham.getId(),chiTietSanPham.getTenSP(),img,chiTietSanPham.getCategory().getTen(),chiTietSanPham.getMoTa(),chiTietSanPham.getNhaSanXuat().getTen(),chiTietSanPham.getGiaBan()));
+        List<ChiTietSanPhamResponse> chiTietSanPhamResponses = chiTietSanPhamRepository.findAllChiTietSanPham();
+        if (chiTietSanPhamResponses.size() > 0) {
+            for (ChiTietSanPhamResponse chiTietSanPhamResponse : chiTietSanPhamResponses) {
+                String img = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/images/")
+                        .path(chiTietSanPhamResponse.getSanPhamImg())
+                        .toUriString();
+                chiTietSanPhamResponse.setSanPhamImg(img);
+            }
         }
         return chiTietSanPhamResponses;
     }
 
     @Override
     public ChiTietSanPhamResponse getOneById(String id) {
-        ChiTietSanPham chiTietSanPham = chiTietSanPhamRepository.getReferenceById(id);
+        ChiTietSanPhamResponse chiTietSanPhamResponse = chiTietSanPhamRepository.getOneByID(id);
         String img = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/images/")
-                .path(chiTietSanPham.getImg())
+                .path(chiTietSanPhamResponse.getSanPhamImg())
                 .toUriString();
-        ChiTietSanPhamResponse chiTietSanPhamResponses = new ChiTietSanPhamResponse(chiTietSanPham.getId(),chiTietSanPham.getTenSP(),img,chiTietSanPham.getCategory().getTen(),chiTietSanPham.getMoTa(),chiTietSanPham.getNhaSanXuat().getTen(),chiTietSanPham.getGiaBan());
+        chiTietSanPhamResponse.setSanPhamImg(img);
+        return chiTietSanPhamResponse;
+    }
+
+    @Override
+    public List<ChiTietSanPhamResponse> getAllByName(String name) {
+        List<ChiTietSanPhamResponse> chiTietSanPhamResponses = chiTietSanPhamRepository.findAllByTenSP(name);
+        if(chiTietSanPhamResponses.size() > 0) {
+            for (ChiTietSanPhamResponse chiTietSanPhamResponse : chiTietSanPhamResponses) {
+                String img = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/images/")
+                        .path(chiTietSanPhamResponse.getSanPhamImg())
+                        .toUriString();
+               chiTietSanPhamResponse.setSanPhamImg(img);
+            }
+        }
+        return chiTietSanPhamResponses;
+    }
+
+    @Override
+    public List<ChiTietSanPhamResponse> findAllByCateID(String id) {
+        List<ChiTietSanPhamResponse> chiTietSanPhamResponses = chiTietSanPhamRepository.findAllByCategoryId(id);
+        if(chiTietSanPhamResponses.size() > 0) {
+            for (ChiTietSanPhamResponse chiTietSanPhamResponse : chiTietSanPhamResponses) {
+                String img = ServletUriComponentsBuilder.fromCurrentContextPath()
+                        .path("/images/")
+                        .path(chiTietSanPhamResponse.getSanPhamImg())
+                        .toUriString();
+                chiTietSanPhamResponse.setSanPhamImg(img);
+            }
+        }
         return chiTietSanPhamResponses;
     }
 }

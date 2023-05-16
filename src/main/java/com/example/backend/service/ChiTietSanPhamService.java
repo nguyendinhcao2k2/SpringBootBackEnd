@@ -12,4 +12,9 @@ public interface ChiTietSanPhamService {
     List<ChiTietSanPhamResponse> getAll();
 
     ChiTietSanPhamResponse getOneById(String id);
+
+    List<ChiTietSanPhamResponse> getAllByName(String name);
+
+    List<ChiTietSanPhamResponse> findAllByCateID(String id);
+
 }
