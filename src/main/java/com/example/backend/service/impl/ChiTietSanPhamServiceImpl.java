@@ -1,14 +1,13 @@
 package com.example.backend.service.impl;
 
-import com.example.backend.entity.ChiTietSanPham;
 import com.example.backend.model.response.ChiTietSanPhamResponse;
 import com.example.backend.repository.ChiTietSanPhamRepository;
 import com.example.backend.service.ChiTietSanPhamService;
+import jakarta.servlet.ServletContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,9 +18,10 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
 
     @Autowired
     private ChiTietSanPhamRepository chiTietSanPhamRepository;
-
+    @Autowired
+    private ServletContext servletContext;
     @Override
-    public List<ChiTietSanPhamResponse> getAll() {
+    public List<ChiTietSanPhamResponse> getAll()  {
         List<ChiTietSanPhamResponse> chiTietSanPhamResponses = chiTietSanPhamRepository.findAllChiTietSanPham();
         if (chiTietSanPhamResponses.size() > 0) {
             for (ChiTietSanPhamResponse chiTietSanPhamResponse : chiTietSanPhamResponses) {
@@ -29,6 +29,7 @@ public class ChiTietSanPhamServiceImpl implements ChiTietSanPhamService {
                         .path("/images/")
                         .path(chiTietSanPhamResponse.getSanPhamImg())
                         .toUriString();
+                System.out.println(img);
                 chiTietSanPhamResponse.setSanPhamImg(img);
             }
         }

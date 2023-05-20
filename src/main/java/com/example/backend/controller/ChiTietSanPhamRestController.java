@@ -9,18 +9,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 /**
  * @author caodinh
  */
 @RestController
-@RequestMapping("/api/chi-tiet-san-pham")
+@RequestMapping("/api/user/chi-tiet-san-pham")
 public class ChiTietSanPhamRestController {
 
     @Autowired
     private ChiTietSanPhamService chiTietSanPhamService;
 
     @GetMapping
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<?> getAll() throws IOException {
        return new ResponseEntity<>(chiTietSanPhamService.getAll(), HttpStatus.OK);
     }
 

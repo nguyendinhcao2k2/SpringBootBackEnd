@@ -1,6 +1,7 @@
 package tool.dbconfig;
 
 
+import com.example.backend.entity.Admin;
 import com.example.backend.entity.Category;
 import com.example.backend.entity.ChiTietSanPham;
 import com.example.backend.entity.ChucVu;
@@ -97,12 +98,22 @@ public class DBGenerator implements CommandLineRunner {
         nhaSanXuatRepository.save(nhaSanXuat2);
 
         //Gen ChiTiet San Pham
-        ChiTietSanPham chiTietSanPham = new ChiTietSanPham(null,"Áo 2 màu cho nam và nữ",nhaSanXuat,category2,mauSac2,"Chất Liệu Vải Được làm bằng Cotton mát mẻ không bị ngứa","static/images/ao/ao_unisex.jpeg",200, BigDecimal.valueOf(300));
+        ChiTietSanPham chiTietSanPham = new ChiTietSanPham(null,"Áo 2 màu cho nam và nữ",nhaSanXuat,category2,mauSac2,"Chất Liệu Vải Được làm bằng Cotton mát mẻ không bị ngứa","static/images/ao/ao_polo.webp",200, BigDecimal.valueOf(300));
         chiTietSanPhamRepository.save(chiTietSanPham);
-        ChiTietSanPham chiTietSanPham1 = new ChiTietSanPham(null,"Quần Vải Sang Chảnh",nhaSanXuat1,category,mauSac3,"Chất Liệu Vải Được làm bằng Cotton mát mẻ không bị ngứa","static/images/pants/quan_vip_pro.jpeg",200, BigDecimal.valueOf(150));
+        ChiTietSanPham chiTietSanPham1 = new ChiTietSanPham(null,"Quần Vải Sang Chảnh",nhaSanXuat1,category,mauSac3,"Chất Liệu Vải Được làm bằng Cotton mát mẻ không bị ngứa","static/images/pants/quan_jean.webp",200, BigDecimal.valueOf(150));
         chiTietSanPhamRepository.save(chiTietSanPham1);
-        ChiTietSanPham chiTietSanPham2 = new ChiTietSanPham(null,"Giày đẹp cho nam và nữ",nhaSanXuat2,category3,mauSac3,"Giày được làm bằng vải tơ tằm được dệt cách đây 300 năm,thuộc hàng cao cấp và hiếm nhất","static/images/shoes/giay_cho_nam_nu.jpeg",200, BigDecimal.valueOf(300));
+        ChiTietSanPham chiTietSanPham2 = new ChiTietSanPham(null,"Giày đẹp cho nam và nữ",nhaSanXuat2,category3,mauSac3,"Giày được làm bằng vải tơ tằm được dệt cách đây 300 năm,thuộc hàng cao cấp và hiếm nhất","static/images/shoes/giay_cho_nam.webp",200, BigDecimal.valueOf(300));
         chiTietSanPhamRepository.save(chiTietSanPham2);
+
+        //Gen User
+        User user = new User(null,"US001","Nguyen Dinh Cao","caondph20015@fpt.edu.vn","img",null,chucVu);
+        userRepository.save(user);
+        User user1 = new User(null,"US002","Cao Coc","caococ2002","img",null,chucVu);
+        userRepository.save(user1);
+
+        //Gen Admin
+        Admin admin = new Admin(null,"AM001","Nam Dinh","0943232913","namdinh","123456",chucVu1);
+        adminRepository.save(admin);
     }
 
     public static void main(String[] args) {

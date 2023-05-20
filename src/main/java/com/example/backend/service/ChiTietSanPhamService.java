@@ -2,6 +2,7 @@ package com.example.backend.service;
 
 import com.example.backend.model.response.ChiTietSanPhamResponse;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  */
 public interface ChiTietSanPhamService {
 
-    List<ChiTietSanPhamResponse> getAll();
+    List<ChiTietSanPhamResponse> getAll() throws IOException;
 
     ChiTietSanPhamResponse getOneById(String id);
 

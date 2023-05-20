@@ -1,5 +1,6 @@
 package com.example.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,6 +48,9 @@ public class User {
     @Column(name = "img", nullable = false)
     @Nationalized
     private String img;
+
+    @JsonIgnore
+    private String password = null;
 
     @ManyToOne
     @JoinColumn(name = "id_chuc_vu")
